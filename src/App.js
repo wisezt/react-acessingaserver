@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Layout from './components/Layout/Layout.js';
 
 import Aux from './hoc/Auxiliary.js'
+import BurgerBuilder from './containers/BurgerBuilder.js'
 
 
 
@@ -9,17 +10,15 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Aux>
-              <p> test</p>
-          </Aux>
+
+
+
           <Layout>
-              <p>
-                layout test!!!
-              </p>
+              <BurgerBuilder></BurgerBuilder>
           </Layout>
 
 
-          <p>Test</p>
+
 
      </div>
     );
