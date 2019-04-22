@@ -97,14 +97,16 @@ updatePurchaseState(ingredients){
                 <OrderSummary
                     purchaseContinued={this.purchaseContinueHandler}
                     purchaseCanceled={this.purchaseCancelHandler}
-                    ingredients={this.state.ingredients}/>
+                    ingredients={this.state.ingredients}
+                    price={this.state.totalPrice}
+                />
             </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
                     ingredientAdded={this.addIngredientHander}
                     ingredientRemoved={this.removeIngredientHander}
                     disabled={disabledInfo}
-                    price={this.state.totalPrice}
+                    price={this.state.totalPrice.toFixed(2)}
                     purchasable={this.state.purchasable}
                     ordered={this.purchaseHander}
                 />
