@@ -1,35 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Button from '../../../components/UI/Button/Button.js'
 
 
-const orderSummary = (props) => {
-    const ingredientSummary = Object.keys(props.ingredients).map(igKey => {
+class orderSummary extends Component {
+    componentWillUpdate(){
+        console.log('[Orderummary] WillUpdate');
+    }
 
-        return <li key={igKey}><span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}
+     ingredientSummary = Object.keys(this.props.ingredients).map(igKey => {
+
+        return <li key={igKey}><span style={{textTransform: 'capitalize'}}>{igKey}</span>: {this.props.ingredients[igKey]}
         </li>
 
     });
 
-
+render() {
     return (
         <>
             <h3> Your Order</h3>
             <p>A delicious burger:</p>
             <ul>
-                {ingredientSummary}
+                {this.ingredientSummary}
             </ul>
-            <p><strong>Total Price: {props.price.toFixed(2)}</strong></p>
+            <p><strong>Total Price: {this.props.price.toFixed(2)}</strong></p>
 
             <Button
-                clicked={props.purchaseCanceled}
+                clicked={this.props.purchaseCanceled}
                 btnType="Danger"
             >
                 CANCEL
             </Button>
             <Button
-                clicked={props.purchaseContinued}
+                clicked={this.props.purchaseContinued}
                 btnType="Success"
-                >
+            >
                 CONTINUE
             </Button>
 
@@ -37,7 +41,7 @@ const orderSummary = (props) => {
         </>
 
     );
-
+}
 
 }
 
