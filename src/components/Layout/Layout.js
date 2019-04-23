@@ -13,11 +13,17 @@ class Layout extends Component {
         this.setState({showSideDrawer: false});
     }
 
+    sideDrawerToggleHandler=()=>{
+        this.setState((prevState)=>{
+            return{showSideDrawer: !prevState.showSideDrawer}// import trigger this method the value will  be set to the opposite
+        });
+    }
+
     render() {
         return (
             <>
 
-                <Toolbar/>
+                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
                 <SideDrawer
                     open={this.state.showSideDrawer}
                     closed = {this.sideDrawerCosedHandler} />
