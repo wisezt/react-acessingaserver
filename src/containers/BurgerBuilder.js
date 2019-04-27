@@ -4,6 +4,7 @@ import BuildControls from '../components/Burger/BuildControls/BuildControls';
 import Modal from '../components/UI/Modal/Modal.js';
 import OrderSummary from '../components/Burger/OrderSummary/OrderSummary.js'
 import axios from '../axios-orders.js';
+import Spinner from '../components/UI/Spinner/Spinner';
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -22,8 +23,8 @@ class BugerBuider extends Component {
         },
         totalPrice: 4,
         purchasable: false,
-        purchasing:false
-
+        purchasing:false,
+        Loading: false
     }
 
 updatePurchaseState(ingredients){
@@ -80,6 +81,7 @@ updatePurchaseState(ingredients){
 
     purchaseContinueHandler = () =>{
         //alert('continue!!!');
+        this.setState({Loading: true});
         const order ={
             ingredients: this.state.ingredients,
             price: this.state.totalPrice,
@@ -92,8 +94,11 @@ updatePurchaseState(ingredients){
             },
             email: 'test@test'
         }
-        axios.post('/orders.json', order).then(response => console.log(response)) // important!
-            .catch(error => console.log(error));
+        axios.post('/orders.json', order).then(response =>{
+            this.setState({Loading: false, purchasing :false})
+        }) // important!
+            .catch(error => {console.log(error)
+            this.setState({Loading: false,  purchasing :false})});
         ;
 
     }
@@ -102,11 +107,22 @@ updatePurchaseState(ingredients){
         const disabledInfo ={
             ...this.state.ingredients
         };
+
+        let SummeryOrder = <OrderSummary
+            purchaseContinued={this.purchaseContinueHandler}
+            purchaseCanceled={this.purchaseCancelHandler}
+            ingredients={this.state.ingredients}
+            price={this.state.totalPrice}
+        />;
+
         for (let key in disabledInfo){
             disabledInfo[key] = disabledInfo[key]<=0 // The type of disabledInfo changed from an number (integer) to boolean!!!
         }
 
+        if (this.state.Loading){
+            SummeryOrder = <Spinner/>;
 
+        }
 
 
 
@@ -116,12 +132,7 @@ updatePurchaseState(ingredients){
             <Modal show={this.state.purchasing}
                         modalClosed={this.purchaseCancelHandler}
             >
-                <OrderSummary
-                    purchaseContinued={this.purchaseContinueHandler}
-                    purchaseCanceled={this.purchaseCancelHandler}
-                    ingredients={this.state.ingredients}
-                    price={this.state.totalPrice}
-                />
+                {SummeryOrder}
             </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
