@@ -92,7 +92,7 @@ updatePurchaseState(ingredients){
             },
             email: 'test@test'
         }
-        axios.post('/orders.json', order).then(response => console.log(response))
+        axios.post('/orders.json', order).then(response => console.log(response)) // important!
             .catch(error => console.log(error));
         ;
 
