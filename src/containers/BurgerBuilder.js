@@ -152,6 +152,7 @@ updatePurchaseState(ingredients){
                     price={this.state.totalPrice.toFixed(2)}
                     purchasable={this.state.purchasable}
                     ordered={this.purchaseHander}
+
                 />
 
             </>
