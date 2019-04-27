@@ -11,12 +11,20 @@ const burger = (props) => {
     //     });
     // console.log(IngredientsArray);
 
-    let IngredientsArray = Object.entries(props.ingredients);
-    console.log('[Burger]' + IngredientsArray);
-    console.log(IngredientsArray.map(X=>{
-        console.log(X);
-        console.log(IngredientsArray[X]);
-    }));
+    // let IngredientsArray = Object.entries(props.ingredients);
+    // console.log('[Burger]' + IngredientsArray);
+    // console.log(IngredientsArray.map(X=>{
+    //     console.log(X);
+    //     console.log(IngredientsArray[X]);
+    // }));
+
+    console.log(props.ingredients);
+    let array= null;
+    let arrayIngredients = Object.keys(props.ingredients).map( ingredient => {
+        console.log(ingredient)
+    });
+    console.log(arrayIngredients);
+
     let transformedIngredients = Object.keys(props.ingredients) // output ["salad", "bacon", "cheese", "meat"], be careful that all the elements inside the array are all String!
         .map((igKey) => {
             return (
