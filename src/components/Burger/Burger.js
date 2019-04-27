@@ -4,12 +4,12 @@ import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/Burgeringredient.js';
 
 const burger = (props) => {
-    let IngredientsArray = Object.keys(props.ingredients)
-        .map((igKey) => {
-            return (
-                [...Array(props.ingredients[igKey])]);
-        });
-
+    // let IngredientsArray = null;
+    //     Object.keys(props.ingredients)
+    //     .map((igKey) => {IngredientsArray = [...IngredientsArray, [...Array(props.ingredients[igKey])]]
+    //
+    //     });
+    // console.log(IngredientsArray);
     let transformedIngredients = Object.keys(props.ingredients) // output ["salad", "bacon", "cheese", "meat"], be careful that all the elements inside the array are all String!
         .map((igKey) => {
             return (
