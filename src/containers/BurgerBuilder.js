@@ -27,6 +27,16 @@ class BugerBuider extends Component {
         Loading: false
     }
 
+    componentDidMount(){
+
+            axios.get( 'https://react-acessingaserver.firebaseio.com/ingredients.json').then(response => {this.setState({ingredients: response.data});
+                console.log('[BurgerBuilder].[componentDidCount] :');
+                console.log(response)
+
+            });
+            }
+
+
 updatePurchaseState(ingredients){
 
         const sum = Object.keys(ingredients)
