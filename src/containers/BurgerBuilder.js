@@ -89,6 +89,8 @@ updatePurchaseState(ingredients){
             disabledInfo[key] = disabledInfo[key]<=0 // The type of disabledInfo changed from an number (integer) to boolean!!!
         }
 
+
+
         return (
             <>
             <Modal show={this.state.purchasing}
