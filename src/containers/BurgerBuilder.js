@@ -91,6 +91,9 @@ updatePurchaseState(ingredients){
 
 
 
+
+
+
         return (
             <>
             <Modal show={this.state.purchasing}
