@@ -4,26 +4,11 @@ import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/Burgeringredient.js';
 
 const burger = (props) => {
-    // let IngredientsArray = null;
-    //     Object.keys(props.ingredients)
-    //     .map((igKey) => {IngredientsArray = [...IngredientsArray, [...Array(props.ingredients[igKey])]]
-    //
-    //     });
-    // console.log(IngredientsArray);
 
-    // let IngredientsArray = Object.entries(props.ingredients);
-    // console.log('[Burger]' + IngredientsArray);
-    // console.log(IngredientsArray.map(X=>{
-    //     console.log(X);
-    //     console.log(IngredientsArray[X]);
-    // }));
 
-    console.log(props.ingredients);
-    let array= null;
-    let arrayIngredients = Object.keys(props.ingredients).map( ingredient => {
-        console.log(ingredient)
-    });
-    console.log(arrayIngredients);
+    for (let key in props.ingredients){
+        console.log('[Burger]'+key + props.ingredients[key])
+    }
 
     let transformedIngredients = Object.keys(props.ingredients) // output ["salad", "bacon", "cheese", "meat"], be careful that all the elements inside the array are all String!
         .map((igKey) => {

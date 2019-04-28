@@ -113,6 +113,11 @@ updatePurchaseState(ingredients){
 
     }
 
+    getQuantity=(type)=>{
+        let count = this.state.ingredients[type];
+        return count;
+    }
+
     render() {
         const disabledInfo ={
             ...this.state.ingredients
@@ -151,7 +156,7 @@ updatePurchaseState(ingredients){
                     disabled={disabledInfo}
                     price={this.state.totalPrice.toFixed(2)}
                     purchasable={this.state.purchasable}
-                    ordered={this.purchaseHander}
+                   ingredients={this.state.ingredients}
 
                 />
 
